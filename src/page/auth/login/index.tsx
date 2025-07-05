@@ -29,7 +29,7 @@ export function LoginPage() {
   const onSubmit = () => {};
 
   return (
-    <AuthLayout isShowSocialAuth >
+    <AuthLayout isShowSocialAuth>
       <AuthHeader
         title="Login to Account"
         description="Please enter your email and password to continue"
@@ -67,10 +67,7 @@ export function LoginPage() {
           </Link>
         </div>
 
-        <Button
-          className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-full"
-          type="submit"
-        >
+        <Button className="h-12 rounded-full purple-blue-btn" type="submit">
           Login
         </Button>
       </form>

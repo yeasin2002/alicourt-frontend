@@ -57,6 +57,7 @@ export function AuthLayout({
 type AuthHeaderProps = {
   title: string;
   description: string;
+  description2?: string;
 
   className?: string;
   titleClassName?: string;
@@ -65,6 +66,7 @@ type AuthHeaderProps = {
 export const AuthHeader = ({
   title,
   description,
+  description2,
 
   className,
   descriptionClassName,
@@ -82,6 +84,8 @@ export const AuthHeader = ({
       </h1>
       <p className={cn("text-gray-600 text-sm", descriptionClassName)}>
         {description}
+        <br />
+        {description2}
       </p>
     </div>
   );

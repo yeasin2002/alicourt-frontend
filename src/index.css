@@ -119,3 +119,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .purple-blue-btn {
+    @apply  h-10 bg-gradient-to-r from-[#081963] to-[#581DA8] hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-full w-full;
+  }
+}
