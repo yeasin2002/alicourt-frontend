@@ -1,11 +1,12 @@
-// src/store/index.ts
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
+import { persistStore } from "redux-persist";
+import persistReducer from "./persist-reducer";
 
-export const store = configureStore({
-  reducer: rootReducer,
+export const initialStore = configureStore({
+  reducer: persistReducer,
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const store = persistStore(initialStore);
+
+export type RootState = ReturnType<typeof initialStore.getState>;
+export type AppDispatch = typeof initialStore.dispatch;

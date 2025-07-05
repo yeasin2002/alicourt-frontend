@@ -1,7 +1,4 @@
-"use client";
-
-import logo from "@/assets/logo.svg";
-import { SocialAuth } from "@/components/shared";
+import { Logo, SocialAuth } from "@/components/shared";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +6,6 @@ interface Props {
   children: React.ReactNode;
   isShowSocialAuth?: boolean;
   isShowLogo?: boolean;
-
   wrapperClassName?: string;
 }
 
@@ -25,14 +21,7 @@ export function AuthLayout({
         <CardContent className={cn("px-8 py-8", wrapperClassName)}>
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            {isShowLogo && (
-              <div className="flex items-center space-x-2">
-                <img src={logo} alt="logo" />
-                <span className="text-xl font-semibold text-gray-800">
-                  gameplan
-                </span>
-              </div>
-            )}
+            {isShowLogo && <Logo />}
           </div>
           {children}
           {isShowSocialAuth && (
