@@ -29,10 +29,11 @@ export function LoginPage() {
   const onSubmit = () => {};
 
   return (
-    <AuthLayout isShowSocialAuth>
+    <AuthLayout isShowSocialAuth >
       <AuthHeader
         title="Login to Account"
         description="Please enter your email and password to continue"
+        titleClassName="order-first"
       />
 
       {/* Form */}
@@ -41,6 +42,7 @@ export function LoginPage() {
           register={register("email")}
           error={errors.email?.message}
           labelName="Email"
+          type="email"
         />
 
         <PasswordInput

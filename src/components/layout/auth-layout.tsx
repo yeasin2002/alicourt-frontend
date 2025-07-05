@@ -3,25 +3,36 @@
 import logo from "@/assets/logo.svg";
 import { SocialAuth } from "@/components/shared";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface Props {
   children: React.ReactNode;
   isShowSocialAuth?: boolean;
+  isShowLogo?: boolean;
+
+  wrapperClassName?: string;
 }
 
-export function AuthLayout({ children, isShowSocialAuth }: Props) {
+export function AuthLayout({
+  children,
+  isShowSocialAuth,
+  isShowLogo = true,
+  wrapperClassName,
+}: Props) {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md shadow-lg">
-        <CardContent className="p-8">
+      <Card className="w-full max-w-md shadow-lg pt-0">
+        <CardContent className={cn("px-8 py-8", wrapperClassName)}>
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="logo" />
-              <span className="text-xl font-semibold text-gray-800">
-                gameplan
-              </span>
-            </div>
+            {isShowLogo && (
+              <div className="flex items-center space-x-2">
+                <img src={logo} alt="logo" />
+                <span className="text-xl font-semibold text-gray-800">
+                  gameplan
+                </span>
+              </div>
+            )}
           </div>
           {children}
           {isShowSocialAuth && (
@@ -46,14 +57,32 @@ export function AuthLayout({ children, isShowSocialAuth }: Props) {
 type AuthHeaderProps = {
   title: string;
   description: string;
+
+  className?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 };
-export const AuthHeader = ({ title, description }: AuthHeaderProps) => {
+export const AuthHeader = ({
+  title,
+  description,
+
+  className,
+  descriptionClassName,
+  titleClassName,
+}: AuthHeaderProps) => {
   return (
-    <div className="text-center mb-8">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-2 font-montserrat">
+    <div className={cn("text-center mb-8 flex flex-col", className)}>
+      <h1
+        className={cn(
+          "text-2xl font-semibold text-gray-800 mb-2 font-montserrat order-last",
+          titleClassName
+        )}
+      >
         {title}
       </h1>
-      <p className="text-gray-600 text-sm">{description}</p>
+      <p className={cn("text-gray-600 text-sm", descriptionClassName)}>
+        {description}
+      </p>
     </div>
   );
 };
