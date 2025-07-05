@@ -1,31 +1,18 @@
+import type { AuthState } from "@/types";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface User {
-  id: string | null;
-  full_name: string | null;
-  email: string | null;
-  terms: string | null;
-  password: string | null;
-  profile: string | null;
-}
-
-interface AuthState {
-  user: User;
-  access: string | null;
-  refresh: string | null;
-  isAuthenticated: boolean;
-}
+const blankUser = {
+  id: null,
+  full_name: null,
+  email: null,
+  terms: null,
+  password: null,
+  profile: null,
+};
 
 const initialState: AuthState = {
-  user: {
-    id: null,
-    full_name: null,
-    email: null,
-    terms: null,
-    password: null,
-    profile: null,
-  },
+  user: blankUser,
   access: null,
   refresh: null,
   isAuthenticated: false,
@@ -68,14 +55,7 @@ export const authSlice = createSlice({
 
     loginFailure: (state) => {
       state.isAuthenticated = false;
-      state.user = {
-        id: null,
-        full_name: null,
-        email: null,
-        terms: null,
-        password: null,
-        profile: null,
-      };
+      state.user = blankUser;
       state.access = null;
       state.refresh = null;
     },
