@@ -4,7 +4,7 @@ import { ProfileModal, Sidebar, UserMenu } from "@/components/dashboard";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
-export default function DashboardLayout({
+export function DashboardLayout({
   children,
   className,
 }: {

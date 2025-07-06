@@ -1,6 +1,6 @@
 import { CalendarEvents } from "@/components/dashboard/calendar-events";
 import { CalendarGrid } from "@/components/dashboard/calendar-grid";
-import DashboardLayout from "@/components/layout/dashboard-layout";
+import { DashboardLayout } from "@/components/layout/dashboard-layout";
 
 export function CalendarPage() {
   return (
