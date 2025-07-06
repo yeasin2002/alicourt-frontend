@@ -2,10 +2,12 @@ import { PasswordInput, TextInput } from "@/components/custom-ui";
 import { AuthHeader, AuthLayout } from "@/components/layout";
 import { Button, Checkbox, Label } from "@/components/ui";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { useRegisterMutation } from "@/store/api";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const singupSchema = z.object({
@@ -15,19 +17,37 @@ const singupSchema = z.object({
   confirmPassword: z.string().min(8, "Password must be at least 8 characters"),
   remember: z.boolean(),
 });
+type singupSchemaType = z.infer<typeof singupSchema>;
 
 export function SingupPage() {
+  const [dispatch] = useRegisterMutation();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<singupSchemaType>({
     resolver: zodResolver(singupSchema),
     defaultValues: { email: "", password: "", remember: false },
   });
 
-  const onSubmit = () => {};
-
+  const onSubmit = async (data: singupSchemaType) => {
+    try {
+      const req = await dispatch({
+        email: data.email,
+        password: data.password,
+        username: data.username,
+        password2: data.confirmPassword,
+      });
+      console.log(req);
+      if (req.error && !req.data) throw new Error("An  error occurred");
+      return navigate("/verification", { state: { access_token: "state" } });
+    } catch (error) {
+      console.log(error);
+      return toast.error("Something went wrong");
+    }
+  };
   return (
     <AuthLayout isShowSocialAuth isShowLogo={false} wrapperClassName="py-0">
       <AuthHeader

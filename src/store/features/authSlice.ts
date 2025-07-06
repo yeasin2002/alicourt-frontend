@@ -43,6 +43,7 @@ export const authSlice = createSlice({
     signin: (state, action: PayloadAction<{ email: string }>) => {
       state.isAuthenticated = true;
       state.user.email = action.payload.email;
+      state.access = null;
     },
 
     updateProfile: (

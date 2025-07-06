@@ -55,7 +55,11 @@ export const PasswordInput = ({
         </div>
       </div>
 
-      <>{isShowError && <p className="inputCombo-error">{error || ""}</p>}</>
+      <>
+        {isShowError && (
+          <p className="text-xs text-red-600 pt-1">{error || ""}</p>
+        )}
+      </>
     </div>
   );
 };

@@ -1,30 +1,63 @@
 import { PasswordInput, TextInput } from "@/components/custom-ui";
 import { AuthHeader, AuthLayout } from "@/components/layout";
 import { Button, Checkbox, Label } from "@/components/ui";
+import { setCredentials, signin } from "@/store/features/authSlice";
+
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { useAppDispatch } from "@/hooks/use-redux";
+import { useLoginMutation } from "@/store/api";
+import { Loader2Icon } from "lucide-react";
 import { z } from "zod";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  password: z.string().min(1, "Password must be at least 8 characters"),
   remember: z.boolean(),
 });
+type LoginSchemaType = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
+  const [loginMutation] = useLoginMutation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
+    setValue,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: "", password: "", remember: false },
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (data: LoginSchemaType) => {
+    try {
+      const req = await loginMutation({
+        email: data.email,
+        password: data.password,
+      });
+      console.log(req);
+
+      // req.error.error
+      if (req.error && !req.data) throw new Error("something went wrong");
+
+      dispatch(
+        setCredentials({
+          access: req.data.token.access,
+          refresh: req.data.token.refresh,
+        })
+      );
+      dispatch(signin({ email: data.email }));
+      return navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <AuthLayout isShowSocialAuth>
@@ -52,7 +85,11 @@ export function LoginPage() {
         {/* Remember Password & Forgot Password */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Checkbox id="remember" />
+            <Checkbox
+              id="remember"
+              {...register("remember")}
+              onCheckedChange={(val: boolean) => setValue("remember", val)}
+            />
             <Label htmlFor="remember" className="text-sm text-gray-600">
               Remember Password
             </Label>
@@ -66,7 +103,7 @@ export function LoginPage() {
         </div>
 
         <Button className="h-12 rounded-full purple-blue-btn" type="submit">
-          Login
+          {isSubmitting ? <Loader2Icon className="animate-spin" /> : "Login"}
         </Button>
       </form>
 
