@@ -8,13 +8,13 @@ import { ForgotPasswordPage } from "./page/forgot-password";
 import { VerificationPage } from "./page/verification";
 
 export const router = createBrowserRouter([
+  // dashboard
+  { path: "/", Component: Homepage },
+  { path: "/calendar", Component: CalendarPage },
+
   // auth pages
   { path: "/login", Component: LoginPage },
   { path: "/register", Component: SingupPage },
   { path: "/verification", Component: VerificationPage },
   { path: "/forgot-password", Component: ForgotPasswordPage },
-
-  // dashboard
-  { path: "/", Component: Homepage },
-  { path: "/calendar", Component: CalendarPage },
 ]);
