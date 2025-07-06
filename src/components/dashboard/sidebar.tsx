@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { BookOpen, Calendar, MoreHorizontal, Plus } from "lucide-react";
+import { Logo } from "../shared";
 
 export function Sidebar() {
   const recentPlans = ["Last Plan", "Last Plan", "Last Plan"];
@@ -17,18 +18,13 @@ export function Sidebar() {
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full flex flex-col">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-md flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm"></div>
-          </div>
-          <span className="text-xl font-semibold text-gray-800">gameplan</span>
-        </div>
+      <div className="p-6 ">
+        <Logo />
       </div>
 
       {/* Main Actions */}
       <div className="p-4 space-y-3">
-        <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full h-10">
+        <Button className="w-full  rounded-full h-10 " variant={"purple-blue"}>
           <Plus className="h-4 w-4 mr-2" />
           New Plans
         </Button>
@@ -110,7 +106,10 @@ export function Sidebar() {
 
       {/* Upgrade Button */}
       <div className="p-4 border-t border-gray-200">
-        <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full h-10">
+        <Button
+          className="w-full  text-white rounded-full h-10"
+          variant={"purple-blue"}
+        >
           Upgrade To Pro
         </Button>
       </div>
