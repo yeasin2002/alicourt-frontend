@@ -37,7 +37,7 @@ export const api = createApi({
         url: `/plan/${id}/`,
         method: "GET",
       }),
-      providesTags: (result, error, id) => [{ type: "plans", id }],
+      providesTags: (_result, _error, id) => [{ type: "plans", id }],
     }),
 
     // Create a new plan

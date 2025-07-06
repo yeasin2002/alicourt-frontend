@@ -1,39 +1,51 @@
-"use client"
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Switch } from "@/components/ui/switch"
-import { ChevronDown, FileText, HelpCircle, LogOut, Settings, Shield, User } from "lucide-react"
-import { useState } from "react"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Switch } from "@/components/ui/switch";
+import {
+  ChevronDown,
+  FileText,
+  HelpCircle,
+  LogOut,
+  Settings,
+  Shield,
+  User,
+} from "lucide-react";
+import { useState } from "react";
 
 interface UserMenuProps {
   user: {
-    name: string
-    title: string
-    avatar: string
-  }
+    name: string;
+    title: string;
+    avatar: string;
+  };
 }
 
 export function UserMenu({ user }: UserMenuProps) {
-  const [moodEnabled, setMoodEnabled] = useState(false)
+  const [moodEnabled, setMoodEnabled] = useState(false);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="flex items-center space-x-3 p-2 h-auto">
+        <Button
+          variant="ghost"
+          className="flex items-center space-x-3 p-2 h-auto"
+        >
           <div className="text-right">
             <div className="font-medium text-gray-900">{user.name}</div>
             <div className="text-sm text-gray-500">{user.title}</div>
           </div>
           <Avatar className="h-10 w-10">
-            <AvatarImage src={user.avatar || "/placeholder.svg"} alt={user.name} />
+            <AvatarImage
+              src={user.avatar || "/placeholder.svg"}
+              alt={user.name}
+            />
             <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <ChevronDown className="h-4 w-4 text-gray-500" />
@@ -88,5 +100,5 @@ export function UserMenu({ user }: UserMenuProps) {
         </div>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

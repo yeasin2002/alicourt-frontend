@@ -1,5 +1,3 @@
-"use client";
-
 import { PasswordInput, TextInput } from "@/components/custom-ui";
 import { AuthHeader, AuthLayout } from "@/components/layout";
 import { Button } from "@/components/ui";

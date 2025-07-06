@@ -1,13 +1,13 @@
+import type React from "react";
+
+import { ProfileModal, Sidebar, UserMenu } from "@/components/dashboard";
 import { useState } from "react";
 
-import {
-  ChatInterface,
-  ProfileModal,
-  Sidebar,
-  UserMenu,
-} from "@/components/dashboard";
-
-export function Homepage() {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const user = {
@@ -24,14 +24,18 @@ export function Homepage() {
       {/* Sidebar */}
       <Sidebar />
 
+      {/* Main Content */}
       <div className="flex-1 flex flex-col">
+        {/* Header */}
         <div className="bg-white border-b border-gray-200 px-6 py-4 flex justify-end">
           <UserMenu user={user} />
         </div>
 
-        <ChatInterface />
+        {/* Page Content */}
+        <div className="flex-1 overflow-auto">{children}</div>
       </div>
 
+      {/* Profile Modal */}
       <ProfileModal
         isOpen={isProfileOpen}
         onClose={() => setIsProfileOpen(false)}
