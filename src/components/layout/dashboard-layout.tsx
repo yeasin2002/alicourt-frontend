@@ -1,12 +1,15 @@
 import type React from "react";
 
 import { ProfileModal, Sidebar, UserMenu } from "@/components/dashboard";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 export default function DashboardLayout({
   children,
+  className,
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -32,7 +35,7 @@ export default function DashboardLayout({
         </div>
 
         {/* Page Content */}
-        <div className="flex-1 overflow-auto">{children}</div>
+        <div className={cn("flex-1 overflow-auto", className)}>{children}</div>
       </div>
 
       {/* Profile Modal */}

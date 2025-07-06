@@ -1,42 +1,10 @@
-import { useState } from "react";
-
-import {
-  ChatInterface,
-  ProfileModal,
-  Sidebar,
-  UserMenu,
-} from "@/components/dashboard";
+import { ChatInterface } from "@/components/dashboard";
+import DashboardLayout from "@/components/layout/dashboard-layout";
 
 export function Homepage() {
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-  const user = {
-    name: "Dr. Ali",
-    title: "Medicine specialist",
-    email: "ali@gmail.com",
-    about: "Football Couch",
-    avatar: "/placeholder.svg?height=128&width=128",
-    accountType: "Standard Account",
-  };
-
   return (
-    <div className="h-screen flex bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar />
-
-      <div className="flex-1 flex flex-col">
-        <div className="bg-white border-b border-gray-200 px-6 py-4 flex justify-end">
-          <UserMenu user={user} />
-        </div>
-
-        <ChatInterface />
-      </div>
-
-      <ProfileModal
-        isOpen={isProfileOpen}
-        onClose={() => setIsProfileOpen(false)}
-        user={user}
-      />
-    </div>
+    <DashboardLayout className="h-screen flex bg-gray-50">
+      <ChatInterface />
+    </DashboardLayout>
   );
 }
