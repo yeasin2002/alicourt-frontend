@@ -14,7 +14,7 @@ export function DashboardPage() {
 
   return (
     <DashboardLayout className="h-screen flex bg-gray-50">
-      <div className="flex flex-col h-full bg-gray-50 w-full">
+      <div className="flex flex-col h-full bg-gray-50 w-full px-6 space-y-2 overflow-y-auto">
         {demo_messages.map((message, index) => (
           <ChatMessageBubble
             key={index}
@@ -22,9 +22,11 @@ export function DashboardPage() {
             formatTime={dateToTimeNormalize}
           />
         ))}
-        {/* Suggested Questions */}
-        <SuggestedQuestions />
-        {/* Input Area */}
+
+        <SuggestedQuestions
+          onQuestionClick={(question) => setInputValue(question)}
+        />
+
         <ChatInput
           disabled={isTyping}
           value={inputValue}

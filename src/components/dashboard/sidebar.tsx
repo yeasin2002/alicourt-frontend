@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { BookOpen, Calendar, MoreHorizontal, Plus } from "lucide-react";
+import { Link } from "react-router";
 import { Logo } from "../shared";
 
 export function Sidebar() {
@@ -15,25 +16,26 @@ export function Sidebar() {
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full flex flex-col">
-      {/* Logo */}
-      <div className="p-6 ">
+      <Link to={"/"} className="p-6 ">
         <Logo />
-      </div>
+      </Link>
 
-      {/* Main Actions */}
       <div className="p-4 space-y-3">
         <Button className="w-full  rounded-full h-10 " variant={"purple-blue"}>
           <Plus className="h-4 w-4 mr-2" />
           New Plans
         </Button>
 
-        <Button
-          variant="ghost"
-          className="w-full justify-start h-10 text-gray-700"
+        <Link
+          to={"/calendar"}
+          className={buttonVariants({
+            className: "w-full justify-start h-10 text-gray-700",
+            variant: "ghost",
+          })}
         >
           <Calendar className="h-4 w-4 mr-3" />
           Calendar
-        </Button>
+        </Link>
 
         <Button
           variant="ghost"

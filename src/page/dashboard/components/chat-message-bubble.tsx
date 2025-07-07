@@ -13,7 +13,7 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   formatTime,
 }) => (
   <div
-    className={`flex items-start space-x-3 ${
+    className={`flex items-start space-x-3  ${
       message.type === "user" ? "flex-row-reverse space-x-reverse" : ""
     }`}
   >
