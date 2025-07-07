@@ -2,7 +2,6 @@
 
 import { DashboardLayout } from "@/components/layout";
 import { demo_messages } from "@/data/demo-chat";
-import { useAppSelector } from "@/hooks";
 import { dateToTimeNormalize } from "@/lib/date-time-normalize";
 import { useState } from "react";
 import { ChatInput } from "./components/chat-input";
@@ -12,8 +11,8 @@ import SuggestedQuestions from "./components/suggested-questions";
 export function DashboardPage() {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const user = useAppSelector((state) => state.auth);
-  console.log(user);
+  // const user = useAppSelector((state) => state.auth);
+  // console.log(user);
 
   return (
     <DashboardLayout className="h-screen flex bg-gray-50">
