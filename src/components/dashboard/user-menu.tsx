@@ -35,6 +35,7 @@ export function UserMenu({ user }: UserMenuProps) {
   const [moodEnabled, setMoodEnabled] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");

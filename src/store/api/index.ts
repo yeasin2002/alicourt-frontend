@@ -29,11 +29,3 @@ export const {
   useLogoutMutation,
   useVerifyCodeMutation,
 } = api;
-
-/*
-endpoint: /verification-code/
-body: {
-    "email": "yeasin.dev2002@gmail.com",
-    "otp": "7522"
-}
-*/

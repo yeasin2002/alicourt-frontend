@@ -15,7 +15,6 @@ import type { errorResponse, LoginResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 
-
 export function LoginPage() {
   const [loginMutation] = useLoginMutation();
   const dispatch = useAppDispatch();
