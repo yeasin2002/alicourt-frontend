@@ -1,3 +1,6 @@
+import { useAppDispatch } from "@/hooks/use-redux";
+import { logout } from "@/store/features/authSlice";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +21,7 @@ import {
   User,
 } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 interface UserMenuProps {
   user: {
@@ -29,6 +33,12 @@ interface UserMenuProps {
 
 export function UserMenu({ user }: UserMenuProps) {
   const [moodEnabled, setMoodEnabled] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <DropdownMenu>
@@ -84,7 +94,10 @@ export function UserMenu({ user }: UserMenuProps) {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="flex items-center space-x-3 p-3 cursor-pointer text-red-500 hover:text-red-600">
+        <DropdownMenuItem
+          className="flex items-center space-x-3 p-3 cursor-pointer text-red-500 hover:text-red-600"
+          onClick={handleLogout}
+        >
           <LogOut className="h-5 w-5" />
           <span className="font-medium">Log Out</span>
         </DropdownMenuItem>

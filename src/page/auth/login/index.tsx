@@ -10,7 +10,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useAppDispatch } from "@/hooks/use-redux";
 import { useLoginMutation } from "@/store/api";
+import type { errorResponse, LoginResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const loginSchema = z.object({
@@ -37,14 +39,12 @@ export function LoginPage() {
 
   const onSubmit = async (data: LoginSchemaType) => {
     try {
-      const req = await loginMutation({
+      const req = (await loginMutation({
         email: data.email,
         password: data.password,
-      });
-      console.log(req);
+      })) as { data: LoginResponse; error?: errorResponse };
 
-      // req.error.error
-      if (req.error && !req.data) throw new Error("something went wrong");
+      if (req.error && !req.data) throw new Error(req?.error?.data?.error);
 
       dispatch(
         setCredentials({
@@ -53,9 +53,10 @@ export function LoginPage() {
         })
       );
       dispatch(signin({ email: data.email }));
+      toast.success(req.data.message);
       return navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error((error as Error).message || "something went wrong");
     }
   };
 

@@ -6,14 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { BookOpen, Calendar, MoreHorizontal, Plus } from "lucide-react";
 import { Link } from "react-router";
 import { Logo } from "../shared";
 
-export function Sidebar() {
-  const recentPlans = ["Last Plan", "Last Plan", "Last Plan"];
-  const saveClass = ["Last chat", "Last chat", "Last chat"];
+const recentPlans = ["Last Plan", "Last Plan", "Last Plan"];
+const saveClass = ["Last chat", "Last chat", "Last chat"];
 
+export function Sidebar() {
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full flex flex-col">
       <Link to={"/"} className="p-6 ">
