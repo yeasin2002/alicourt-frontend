@@ -1,18 +1,40 @@
 import { AuthLayout } from "@/components/layout";
 import { Button } from "@/components/ui";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useVerifyCodeMutation } from "@/store/api";
+import type { ApiResponse, BaseResponse } from "@/types";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export function VerificationPage() {
-  const [value, setValue] = useState<string>("");
-  const onSubmit = (e: React.FormEvent) => {
+  const [otp, setOtp] = useState<string>("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [verifyCode] = useVerifyCodeMutation();
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!otp) return toast.error("OTP is required");
+    try {
+      const email = location.state.email;
+      const req = (await verifyCode({
+        email,
+        otp,
+      })) as ApiResponse<BaseResponse>;
+
+      if (req.error && !req.data) throw new Error(req?.error?.data?.error);
+      toast.success(req?.data?.message || "Success");
+      return navigate("/login");
+    } catch (error) {
+      toast.error((error as Error).message || "something went wrong");
+    }
   };
 
   return (
@@ -32,13 +54,9 @@ export function VerificationPage() {
         </h1>
       </div>
       <div className="flex items-center justify-center  gap-y-2 mb-5">
-        <InputOTP
-          maxLength={6}
-          value={value}
-          onChange={(value) => setValue(value)}
-        >
+        <InputOTP maxLength={6} value={otp} onChange={(value) => setOtp(value)}>
           <InputOTPGroup className="gap-x-4">
-            {Array.from({ length: 6 }).map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
               <InputOTPSlot
                 key={index}
                 index={index}
@@ -51,7 +69,10 @@ export function VerificationPage() {
 
       {/* Form */}
       <form className="space-y-6" noValidate onSubmit={onSubmit}>
-        <Button className="rounded-full purple-blue-btn" type="submit">
+        <Button
+          className="rounded-full purple-blue-btn cursor-pointer"
+          type="submit"
+        >
           verify
         </Button>
       </form>

@@ -8,19 +8,13 @@ import { Link, useNavigate } from "react-router";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { loginSchema, type LoginSchemaType } from "@/data";
 import { useAppDispatch } from "@/hooks/use-redux";
 import { useLoginMutation } from "@/store/api";
 import type { errorResponse, LoginResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
-import { z } from "zod";
 
-const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password must be at least 8 characters"),
-  remember: z.boolean(),
-});
-type LoginSchemaType = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
   const [loginMutation] = useLoginMutation();
@@ -103,7 +97,10 @@ export function LoginPage() {
           </Link>
         </div>
 
-        <Button className="h-12 rounded-full purple-blue-btn" type="submit">
+        <Button
+          className="h-12 rounded-full purple-blue-btn cursor-pointer"
+          type="submit"
+        >
           {isSubmitting ? <Loader2Icon className="animate-spin" /> : "Login"}
         </Button>
       </form>
@@ -113,7 +110,7 @@ export function LoginPage() {
         <span className="text-gray-600 text-sm">
           {"Don't Have An Account? "}
           <Link
-            to="/signup"
+            to="/register"
             className="text-blue-600 hover:text-blue-700 font-medium"
           >
             Sign Up

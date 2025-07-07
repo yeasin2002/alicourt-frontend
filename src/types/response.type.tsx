@@ -4,12 +4,17 @@ export type errorResponse = {
   data: { error: string };
   status: number;
 };
-export type BaseResponse = {
-  message: string | null;
-  error?: errorResponse;
-};
 
-export interface LoginResponse {
+export type LoginResponse = {
   token: Token;
   message: string;
-}
+};
+
+export type BaseResponse = {
+  message?: string;
+};
+
+export type ApiResponse<T> = {
+  data: T;
+  error?: errorResponse;
+};
