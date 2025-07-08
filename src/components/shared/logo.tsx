@@ -10,7 +10,7 @@ export const Logo = ({ className, textClassName, ...props }: Props) => {
     <div className="flex items-center space-x-2">
       <img src={logo} alt="logo" {...props} className={cn(className)} />
       <span
-        className={cn("text-xl font-semibold text-gray-800", textClassName)}
+        className={cn("text-xl font-semibold text-primary/90", textClassName)}
       >
         gameplan
       </span>

@@ -30,7 +30,7 @@ export const PasswordInput = ({
   return (
     <div className={cn(wrapperClassName)}>
       <div className="space-y-2">
-        <Label htmlFor="password" className="text-gray-700 font-medium">
+        <Label htmlFor="password" className="text-primary font-medium">
           {labelName}
         </Label>
         <div className="relative">

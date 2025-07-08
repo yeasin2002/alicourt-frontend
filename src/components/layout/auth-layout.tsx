@@ -65,13 +65,13 @@ export const AuthHeader = ({
     <div className={cn("text-center mb-8 flex flex-col", className)}>
       <h1
         className={cn(
-          "text-2xl font-semibold text-gray-800 mb-2 font-montserrat order-last",
+          "text-2xl font-semibold text-primary mb-2 font-montserrat order-last",
           titleClassName
         )}
       >
         {title}
       </h1>
-      <p className={cn("text-gray-600 text-sm", descriptionClassName)}>
+      <p className={cn("text-primary/70 text-sm", descriptionClassName)}>
         {description}
         <br />
         {description2}

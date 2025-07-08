@@ -11,7 +11,9 @@ import { initialStore } from "./store";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={initialStore}>
+      {/* <ThemeProvider> */}
       <RouterProvider router={router} />
+      {/* </ThemeProvider> */}
       <Toaster />
     </Provider>
   </StrictMode>

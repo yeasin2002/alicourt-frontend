@@ -24,7 +24,7 @@ export const TextInput = ({
   return (
     <div className={wrapperClassName}>
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-gray-700 font-medium">
+        <Label htmlFor="email" className="text-primary font-medium">
           {labelName}
         </Label>
         <Input

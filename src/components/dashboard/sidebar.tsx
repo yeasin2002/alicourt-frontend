@@ -45,13 +45,13 @@ export function Sidebar({ className }: SidebarProps) {
       <Button
         variant="ghost"
         size="sm"
-        className="fixed top-4 left-4 z-50 md:hidden bg-white shadow-md"
+        className="fixed top-4 left-4 z-50 md:hidden bg-background shadow-md "
         onClick={toggleMobileSidebar}
       >
         {isMobileOpen ? (
-          <X className="h-4 w-4" />
+          <X className="h-4 w-4 " />
         ) : (
-          <Menu className="h-4 w-4" />
+          <Menu className="h-4 w-4 text-black" />
         )}
       </Button>
 

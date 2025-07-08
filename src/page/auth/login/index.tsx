@@ -84,7 +84,7 @@ export function LoginPage() {
               {...register("remember")}
               onCheckedChange={(val: boolean) => setValue("remember", val)}
             />
-            <Label htmlFor="remember" className="text-sm text-gray-600">
+            <Label htmlFor="remember" className="text-sm text-primary">
               Remember Password
             </Label>
           </div>
@@ -97,7 +97,7 @@ export function LoginPage() {
         </div>
 
         <Button
-          className="h-12 rounded-full purple-blue-btn cursor-pointer"
+          className="h-12 rounded-full purple-blue-btn cursor-pointer text-primary-foreground"
           type="submit"
         >
           {isSubmitting ? <Loader2Icon className="animate-spin" /> : "Login"}

@@ -24,14 +24,14 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
   return (
     <div
       className={cn(
-        " bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 relative",
+        " bg-background bg-opacity-50 flex items-center justify-center z-50 p-4 relative",
         className
       )}
     >
-      <div className="bg-white rounded-2xl shadow-md w-full min-w-2xl max-w-4xl ">
+      <div className="bg-background rounded-2xl shadow-md w-full min-w-2xl max-w-4xl ">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <h2 className="text-2xl font-semibold text-primary">
             Personal Information
           </h2>
           <Button
@@ -63,11 +63,11 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800">
+              <h3 className="text-2xl font-semibold text-primary">
                 {user.name}
               </h3>
 
-              <Badge className="bg-gradient-to-r from-cyan-400 to-purple-500 text-white px-4 py-2 rounded-full">
+              <Badge className="bg-gradient-to-r from-[#081963] to-[#581DA8] hover:from-purple-700   text-white px-4 py-2 rounded-full">
                 <div className="flex items-center space-x-2">
                   <div className="w-4 h-4 bg-white bg-opacity-30 rounded-full"></div>
                   <span>{user.accountType}</span>
@@ -78,7 +78,10 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
             {/* Form Section */}
             <div className="flex-1 space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="fullName" className="text-gray-700 font-medium">
+                <Label
+                  htmlFor="fullName"
+                  className="text-primary/80 font-medium"
+                >
                   Full Name
                 </Label>
                 <div className="relative">
@@ -92,7 +95,7 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-gray-700 font-medium">
+                <Label htmlFor="email" className="text-primary/80 font-medium">
                   Email
                 </Label>
                 <div className="relative">
@@ -107,7 +110,7 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="about" className="text-gray-700 font-medium">
+                <Label htmlFor="about" className="text-primary/80 font-medium">
                   About You
                 </Label>
                 <Input
@@ -117,7 +120,10 @@ export function ProfileModal({ onClose, className }: ProfileModalProps) {
                 />
               </div>
 
-              <Button className="w-full h-12 bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-cyan-500 hover:to-purple-600 text-white font-medium rounded-xl mt-8">
+              <Button
+                className="w-full h-12  text-primary font-medium rounded-2xl mt-8 "
+                variant={"purple-blue"}
+              >
                 Edit Profile
               </Button>
             </div>

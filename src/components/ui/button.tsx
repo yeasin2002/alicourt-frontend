@@ -13,7 +13,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         "purple-blue":
-          "bg-gradient-to-r from-[#081963] to-[#581DA8] hover:from-purple-700 hover:to-blue-700 text-white shadow-xs hover:bg-primary/90",
+          "bg-gradient-to-r from-[#081963] to-[#581DA8] hover:from-purple-700 hover:to-blue-700 !text-white shadow-xs hover:bg-primary/90 !text-primary",
 
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
