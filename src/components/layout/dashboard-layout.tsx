@@ -1,8 +1,8 @@
 import type React from "react";
-import { useState } from "react";
 
 import { ProfileModal, Sidebar, UserMenu } from "@/components/dashboard";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router";
 
 export function DashboardLayout({
   children,
@@ -11,7 +11,11 @@ export function DashboardLayout({
   children: React.ReactNode;
   className?: string;
 }) {
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    return navigate(-1);
+  };
 
   return (
     <div className="h-screen flex bg-gray-50">
@@ -25,10 +29,7 @@ export function DashboardLayout({
         <div className={cn("flex-1 overflow-auto", className)}>{children}</div>
       </div>
 
-      <ProfileModal
-        isOpen={isProfileOpen}
-        onClose={() => setIsProfileOpen(false)}
-      />
+      <ProfileModal onClose={handleClose} />
     </div>
   );
 }

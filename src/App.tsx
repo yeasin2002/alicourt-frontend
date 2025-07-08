@@ -18,10 +18,14 @@ export const router = createBrowserRouter([
         <DashboardPage />
       </PrivateRoute>
     ),
-    children: [
-      { index: true, Component: DashboardPage },
-      { path: "/calendar", Component: CalendarPage },
-    ],
+  },
+  {
+    path: "/calendar",
+    element: (
+      <PrivateRoute>
+        <CalendarPage />
+      </PrivateRoute>
+    ),
   },
   { path: "/create-class", Component: CreateClassPage },
   { path: "/profile", Component: ProfilePage },

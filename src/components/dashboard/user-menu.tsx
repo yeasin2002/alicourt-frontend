@@ -65,7 +65,10 @@ export function UserMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64 p-2">
-        <DropdownMenuItem className="flex items-center space-x-3 p-3 cursor-pointer">
+        <DropdownMenuItem
+          className="flex items-center space-x-3 p-3 cursor-pointer"
+          onClick={() => navigate("/profile")}
+        >
           <User className="h-5 w-5 text-gray-600" />
           <span className="font-medium">PROFILE</span>
         </DropdownMenuItem>

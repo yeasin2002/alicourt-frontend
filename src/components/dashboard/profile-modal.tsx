@@ -7,9 +7,8 @@ import { cn } from "@/lib/utils";
 import { Mail, User, X } from "lucide-react";
 
 interface ProfileModalProps {
-  isOpen: boolean;
   className?: string;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const user = {
@@ -21,22 +20,15 @@ const user = {
   accountType: "Standard Account",
 };
 
-export function ProfileModal({
-  isOpen,
-  onClose = () => {},
-
-  className,
-}: ProfileModalProps) {
-  if (!isOpen) return null;
-
+export function ProfileModal({ onClose, className }: ProfileModalProps) {
   return (
     <div
       className={cn(
-        "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",
+        " bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",
         className
       )}
     >
-      <div className="bg-white rounded-2xl shadow-md w-full max-w-2xl">
+      <div className="bg-white rounded-2xl shadow-md w-full min-w-2xl max-w-4xl ">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-800">
@@ -46,7 +38,7 @@ export function ProfileModal({
             variant="ghost"
             size="sm"
             onClick={onClose}
-            className="h-8 w-8 p-0 rounded-full bg-purple-100 hover:bg-purple-200"
+            className="h-8 w-8 p-0 rounded-full bg-purple-100 hover:bg-purple-200 cursor-pointer"
           >
             <X className="h-4 w-4 text-purple-600" />
           </Button>

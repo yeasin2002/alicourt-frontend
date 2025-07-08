@@ -86,7 +86,8 @@ export function Sidebar({ className }: SidebarProps) {
         </Button>
 
         {/* Logo */}
-        <div
+        <Link
+          to="/"
           className={cn("p-6 border-b border-gray-200", isCollapsed && "px-3")}
         >
           <div className="flex items-center space-x-2">
@@ -97,7 +98,7 @@ export function Sidebar({ className }: SidebarProps) {
               </span>
             )}
           </div>
-        </div>
+        </Link>
 
         {/* Main Actions */}
         <div className={cn("p-4 space-y-3", isCollapsed && "px-2")}>
