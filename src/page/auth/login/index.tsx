@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchemaType } from "@/data";
 import { useAppDispatch } from "@/hooks/use-redux";
 import { useLoginMutation } from "@/store/api";
-import type { errorResponse, LoginResponse } from "@/types";
+import type { ApiResponse, LoginResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -35,7 +35,7 @@ export function LoginPage() {
       const req = (await loginMutation({
         email: data.email,
         password: data.password,
-      })) as { data: LoginResponse; error?: errorResponse };
+      })) as ApiResponse<LoginResponse>;
 
       if (req.error && !req.data) throw new Error(req?.error?.data?.error);
 

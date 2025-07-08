@@ -1,14 +1,19 @@
 import { baseQuery } from "@/lib/rtk-base-query";
 import type { BaseResponse, LoginResponse } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import type { loginBody, RegBody, verifyCodeBody } from "./endpoints-body.type";
+import type {
+  ConfirmResetPassword,
+  LoginBody,
+  RegBody,
+  VerifyCodeBody,
+} from "./endpoints-body.type";
 
-export const api = createApi({
-  reducerPath: "baseApi",
+export const authApi = createApi({
+  reducerPath: "authApi",
   baseQuery: baseQuery,
   tagTypes: ["auth", "chats", "plans"],
   endpoints: (builder) => ({
-    login: builder.mutation<LoginResponse, loginBody>({
+    login: builder.mutation<LoginResponse, LoginBody>({
       query: (body) => ({ url: "/login/", method: "POST", body }),
     }),
     register: builder.mutation<BaseResponse, RegBody>({
@@ -17,8 +22,18 @@ export const api = createApi({
     logout: builder.mutation<BaseResponse, { refresh: string }>({
       query: (body) => ({ url: "/logout/", method: "POST", body }),
     }),
-    verifyCode: builder.mutation<BaseResponse, verifyCodeBody>({
+    verifyCode: builder.mutation<BaseResponse, VerifyCodeBody>({
       query: (body) => ({ url: "/verification-code/", method: "POST", body }),
+    }),
+    resetPassword: builder.mutation<BaseResponse, { email: string }>({
+      query: (body) => ({ url: "/reset-password/", method: "POST", body }),
+    }),
+    confirmResetPassword: builder.mutation<BaseResponse, ConfirmResetPassword>({
+      query: (body) => ({
+        url: "/password-reset-confirm/",
+        method: "POST",
+        body,
+      }),
     }),
   }),
 });
@@ -28,4 +43,6 @@ export const {
   useRegisterMutation,
   useLogoutMutation,
   useVerifyCodeMutation,
-} = api;
+  useResetPasswordMutation,
+  useConfirmResetPasswordMutation,
+} = authApi;

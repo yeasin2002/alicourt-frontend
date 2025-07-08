@@ -6,8 +6,9 @@ import { DashboardPage } from "@/page/dashboard";
 import { PrivateRoute } from "./components/shared";
 import { CalendarPage } from "./page/calendar";
 import { CreateClassPage } from "./page/create-class";
-import { ForgotPasswordPage } from "./page/forgot-password";
 import { ProfilePage } from "./page/profile";
+import { ResetPasswordPage } from "./page/reset-password";
+import { ConfirmResetPasswordPage } from "./page/reset-password-confirm";
 import { VerificationPage } from "./page/verification";
 
 export const router = createBrowserRouter([
@@ -34,5 +35,6 @@ export const router = createBrowserRouter([
   { path: "/login", Component: LoginPage },
   { path: "/register", Component: SingupPage },
   { path: "/verification", Component: VerificationPage },
-  { path: "/forgot-password", Component: ForgotPasswordPage },
+  { path: "/reset-password", Component: ResetPasswordPage },
+  { path: "/reset-password-confirm", Component: ConfirmResetPasswordPage },
 ]);

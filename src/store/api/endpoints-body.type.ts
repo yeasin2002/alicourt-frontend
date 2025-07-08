@@ -5,12 +5,19 @@ export type RegBody = {
   password2: string;
 };
 
-export type loginBody = {
+export type LoginBody = {
   email: string;
   password: string;
 };
 
-export type verifyCodeBody = {
+export type VerifyCodeBody = {
   email: string;
   otp: string;
+};
+
+export type ConfirmResetPassword = {
+  uidb64: string;
+  token: string;
+  password: string;
+  confirm_password: string;
 };

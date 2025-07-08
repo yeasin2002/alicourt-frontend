@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { api } from "./api";
+import { authApi } from "./api";
 
 import authReducer from "./features/authSlice";
 
@@ -11,7 +11,7 @@ const persistConfig = {
   whitelist: ["auth", "chat"],
 };
 const rootReducer = combineReducers({
-  [api.reducerPath]: api.reducer,
+  [authApi.reducerPath]: authApi.reducer,
   auth: authReducer,
 });
 

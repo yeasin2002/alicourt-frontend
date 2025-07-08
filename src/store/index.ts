@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore } from "redux-persist";
-import { api } from "./api";
+import { authApi } from "./api";
 import persistReducer from "./persist-reducer";
 
 export const initialStore = configureStore({
@@ -16,7 +16,7 @@ export const initialStore = configureStore({
           "meta.baseQueryMeta.response",
         ],
       },
-    }).concat(api.middleware),
+    }).concat(authApi.middleware),
 });
 
 export const store = persistStore(initialStore);
