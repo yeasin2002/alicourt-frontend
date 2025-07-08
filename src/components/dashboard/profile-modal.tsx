@@ -3,28 +3,40 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { Mail, User, X } from "lucide-react";
-
-
 
 interface ProfileModalProps {
   isOpen: boolean;
-  onClose: () => void;
-  user: {
-    name: string;
-    email: string;
-    about: string;
-    avatar: string;
-    accountType: string;
-  };
+  className?: string;
+  onClose?: () => void;
 }
 
-export function ProfileModal({ isOpen, onClose, user }: ProfileModalProps) {
+const user = {
+  name: "Ali",
+  email: "ali@gmail.com",
+  about: "Football Couch",
+  avatar:
+    "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  accountType: "Standard Account",
+};
+
+export function ProfileModal({
+  isOpen,
+  onClose = () => {},
+
+  className,
+}: ProfileModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl">
+    <div
+      className={cn(
+        "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",
+        className
+      )}
+    >
+      <div className="bg-white rounded-2xl shadow-md w-full max-w-2xl">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-semibold text-gray-800">

@@ -1,30 +1,43 @@
-"use client"
+import logo from "@/assets/logo.svg";
 
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
-import { BookOpen, Calendar, Menu, MoreHorizontal, Plus, X } from "lucide-react"
-import { useState } from "react"
-import { Link } from "react-router"
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+import {
+  BookOpen,
+  Calendar,
+  Menu,
+  MoreHorizontal,
+  Plus,
+  X,
+} from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router";
 
 interface SidebarProps {
-  className?: string
+  className?: string;
 }
 
 export function Sidebar({ className }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  const recentPlans = ["Last Plan", "Last Plan", "Last Plan"]
-  const saveClass = ["Last chat", "Last chat", "Last chat"]
+  const recentPlans = ["Last Plan", "Last Plan", "Last Plan"];
+  const saveClass = ["Last chat", "Last chat", "Last chat"];
 
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed)
-  }
+    setIsCollapsed(!isCollapsed);
+  };
 
   const toggleMobileSidebar = () => {
-    setIsMobileOpen(!isMobileOpen)
-  }
+    setIsMobileOpen(!isMobileOpen);
+  };
 
   return (
     <>
@@ -35,12 +48,19 @@ export function Sidebar({ className }: SidebarProps) {
         className="fixed top-4 left-4 z-50 md:hidden bg-white shadow-md"
         onClick={toggleMobileSidebar}
       >
-        {isMobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        {isMobileOpen ? (
+          <X className="h-4 w-4" />
+        ) : (
+          <Menu className="h-4 w-4" />
+        )}
       </Button>
 
       {/* Mobile Overlay */}
       {isMobileOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onClick={() => setIsMobileOpen(false)} />
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setIsMobileOpen(false)}
+        />
       )}
 
       {/* Sidebar */}
@@ -52,7 +72,7 @@ export function Sidebar({ className }: SidebarProps) {
           // Mobile positioning
           "fixed md:relative",
           isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
-          className,
+          className
         )}
       >
         {/* Desktop Toggle Button */}
@@ -66,12 +86,16 @@ export function Sidebar({ className }: SidebarProps) {
         </Button>
 
         {/* Logo */}
-        <div className={cn("p-6 border-b border-gray-200", isCollapsed && "px-3")}>
+        <div
+          className={cn("p-6 border-b border-gray-200", isCollapsed && "px-3")}
+        >
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-md flex items-center justify-center flex-shrink-0">
-              <div className="w-4 h-4 bg-white rounded-sm"></div>
-            </div>
-            {!isCollapsed && <span className="text-xl font-semibold text-gray-800">gameplan</span>}
+            <img src={logo} alt="logo" />
+            {!isCollapsed && (
+              <span className="text-xl font-semibold text-gray-800">
+                gameplan
+              </span>
+            )}
           </div>
         </div>
 
@@ -80,7 +104,7 @@ export function Sidebar({ className }: SidebarProps) {
           <Button
             className={cn(
               "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full h-10",
-              isCollapsed ? "w-10 px-0" : "w-full",
+              isCollapsed ? "w-10 px-0" : "w-full"
             )}
             title={isCollapsed ? "New Plans" : undefined}
           >
@@ -91,7 +115,12 @@ export function Sidebar({ className }: SidebarProps) {
           <Link to="/calendar">
             <Button
               variant="ghost"
-              className={cn("text-gray-700 h-10", isCollapsed ? "w-10 px-0 justify-center" : "w-full justify-start")}
+              className={cn(
+                "text-gray-700 h-10",
+                isCollapsed
+                  ? "w-10 px-0 justify-center"
+                  : "w-full justify-start"
+              )}
               title={isCollapsed ? "Calendar" : undefined}
             >
               <Calendar className="h-4 w-4" />
@@ -102,7 +131,12 @@ export function Sidebar({ className }: SidebarProps) {
           <Link to="/create-class">
             <Button
               variant="ghost"
-              className={cn("text-gray-700 h-10", isCollapsed ? "w-10 px-0 justify-center" : "w-full justify-start")}
+              className={cn(
+                "text-gray-700 h-10",
+                isCollapsed
+                  ? "w-10 px-0 justify-center"
+                  : "w-full justify-start"
+              )}
               title={isCollapsed ? "Create Class" : undefined}
             >
               <BookOpen className="h-4 w-4" />
@@ -128,9 +162,16 @@ export function Sidebar({ className }: SidebarProps) {
 
             <div className="space-y-2">
               {recentPlans.map((plan, index) => (
-                <div key={index} className="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded">
+                <div
+                  key={index}
+                  className="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded"
+                >
                   <span className="text-gray-700 text-sm truncate">{plan}</span>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 flex-shrink-0">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 w-6 p-0 flex-shrink-0"
+                  >
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </div>
@@ -144,7 +185,10 @@ export function Sidebar({ className }: SidebarProps) {
           <div className="px-2 py-2">
             <div className="space-y-2">
               {recentPlans.slice(0, 3).map((_, index) => (
-                <div key={index} className="w-10 h-8 bg-gray-100 rounded flex items-center justify-center">
+                <div
+                  key={index}
+                  className="w-10 h-8 bg-gray-100 rounded flex items-center justify-center"
+                >
                   <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                 </div>
               ))}
@@ -169,9 +213,16 @@ export function Sidebar({ className }: SidebarProps) {
 
             <div className="space-y-2">
               {saveClass.map((chat, index) => (
-                <div key={index} className="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded">
+                <div
+                  key={index}
+                  className="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded"
+                >
                   <span className="text-gray-700 text-sm truncate">{chat}</span>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 flex-shrink-0">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 w-6 p-0 flex-shrink-0"
+                  >
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </div>
@@ -185,7 +236,10 @@ export function Sidebar({ className }: SidebarProps) {
           <div className="px-2 py-2 flex-1">
             <div className="space-y-2">
               {saveClass.slice(0, 3).map((_, index) => (
-                <div key={index} className="w-10 h-8 bg-gray-100 rounded flex items-center justify-center">
+                <div
+                  key={index}
+                  className="w-10 h-8 bg-gray-100 rounded flex items-center justify-center"
+                >
                   <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                 </div>
               ))}
@@ -194,18 +248,24 @@ export function Sidebar({ className }: SidebarProps) {
         )}
 
         {/* Upgrade Button */}
-        <div className={cn("p-4 border-t border-gray-200", isCollapsed && "px-2")}>
+        <div
+          className={cn("p-4 border-t border-gray-200", isCollapsed && "px-2")}
+        >
           <Button
             className={cn(
               "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full h-10",
-              isCollapsed ? "w-10 px-0" : "w-full",
+              isCollapsed ? "w-10 px-0" : "w-full"
             )}
             title={isCollapsed ? "Upgrade To Pro" : undefined}
           >
-            {isCollapsed ? <div className="w-4 h-4 bg-white rounded-sm"></div> : "Upgrade To Pro"}
+            {isCollapsed ? (
+              <div className="w-4 h-4 bg-white rounded-sm"></div>
+            ) : (
+              "Upgrade To Pro"
+            )}
           </Button>
         </div>
       </div>
     </>
-  )
+  );
 }
