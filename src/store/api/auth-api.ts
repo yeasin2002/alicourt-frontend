@@ -12,7 +12,6 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: baseQuery,
-  tagTypes: ["auth", "chats", "plans"],
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginBody>({
       query: (body) => ({ url: "/login/", method: "POST", body }),

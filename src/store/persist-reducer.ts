@@ -1,9 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
 import { authApi } from "./api/auth-api";
 
 import authReducer from "./features/authSlice";
+import { chatApi } from "./api/chat-api";
 
 const persistConfig = {
   key: "root",
@@ -12,6 +14,7 @@ const persistConfig = {
 };
 const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
+  [chatApi.reducerPath]: chatApi.reducer,
   auth: authReducer,
 });
 

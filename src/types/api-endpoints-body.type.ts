@@ -1,3 +1,4 @@
+// auth
 export type RegBody = {
   username: string;
   email: string;
@@ -21,3 +22,4 @@ export type ConfirmResetPassword = {
   password: string;
   confirm_password: string;
 };
+
