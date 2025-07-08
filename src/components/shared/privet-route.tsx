@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/hooks/use-redux";
-import { Navigate, useLocation } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 
-export function PrivateRoute({ children }: { children: React.ReactNode }) {
+export function PrivateRoute() {
   // Retrieve auth data from localStorage
   const location = useLocation();
   const Data = useAppSelector((state) => state.auth);
@@ -17,5 +17,5 @@ export function PrivateRoute({ children }: { children: React.ReactNode }) {
   }
 
   // User meets all requirements
-  return children;
+  return <Outlet />;
 }

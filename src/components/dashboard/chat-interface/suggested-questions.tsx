@@ -12,7 +12,7 @@ const defaultSuggestions = [
   "When is the next match?",
 ];
 
-const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
+export const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
   onQuestionClick,
   suggestions = defaultSuggestions,
 }) => (
@@ -33,4 +33,4 @@ const SuggestedQuestions: React.FC<SuggestedQuestionsProps> = ({
   </div>
 );
 
-export default SuggestedQuestions;
+

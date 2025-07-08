@@ -8,7 +8,7 @@ interface ChatMessageBubbleProps {
   formatTime: (date: Date) => string;
 }
 
-const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
+export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   message,
   formatTime,
 }) => (
@@ -50,4 +50,4 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   </div>
 );
 
-export default ChatMessageBubble;
+

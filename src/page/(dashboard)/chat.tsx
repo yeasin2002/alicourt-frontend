@@ -1,14 +1,16 @@
 "use client";
 
+import {
+  ChatInput,
+  ChatMessageBubble,
+  SuggestedQuestions,
+} from "@/components/dashboard";
 import { DashboardLayout } from "@/components/layout";
 import { demo_messages } from "@/data/demo-chat";
 import { dateToTimeNormalize } from "@/lib/date-time-normalize";
 import { useState } from "react";
-import { ChatInput } from "./components/chat-input";
-import ChatMessageBubble from "./components/chat-message-bubble";
-import SuggestedQuestions from "./components/suggested-questions";
 
-export function DashboardPage() {
+export function ChatPage() {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
   // const user = useAppSelector((state) => state.auth);
