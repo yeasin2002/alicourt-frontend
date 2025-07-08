@@ -12,16 +12,18 @@ import {
 
 import {
   CalendarPage,
-  ChatPage,
   CreateClassPage,
+  DashboardPage,
   ProfilePage,
+  SingleChatPage,
 } from "./page/(dashboard)";
 
 export const router = createBrowserRouter([
   {
     Component: PrivateRoute,
     children: [
-      { path: "/", Component: ChatPage },
+      { path: "/", Component: DashboardPage },
+      { path: "/chat/:id", Component: SingleChatPage },
       { path: "/calendar", Component: CalendarPage },
       { path: "/create-class", Component: CreateClassPage },
       { path: "/profile", Component: ProfilePage },

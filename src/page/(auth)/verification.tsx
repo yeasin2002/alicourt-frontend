@@ -7,7 +7,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useVerifyCodeMutation } from "@/store/api";
+import { useVerifyCodeMutation } from "@/store/api/auth-api";
 import type { ApiResponse, BaseResponse } from "@/types";
 import { useState } from "react";
 import toast from "react-hot-toast";

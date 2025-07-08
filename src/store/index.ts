@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore } from "redux-persist";
-import { authApi } from "./api";
+import { authApi } from "./api/auth-api";
 import persistReducer from "./persist-reducer";
 
 export const initialStore = configureStore({

@@ -10,11 +10,9 @@ import { demo_messages } from "@/data/demo-chat";
 import { dateToTimeNormalize } from "@/lib/date-time-normalize";
 import { useState } from "react";
 
-export function ChatPage() {
+export function SingleChatPage() {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  // const user = useAppSelector((state) => state.auth);
-  // console.log(user);
 
   return (
     <DashboardLayout className="h-screen flex bg-gray-50">

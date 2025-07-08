@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { forgotPasswordSchema, type forgotPasswordSchemaType } from "@/data";
-import { useResetPasswordMutation } from "@/store/api";
+import { useResetPasswordMutation } from "@/store/api/auth-api";
 import type { ApiResponse, BaseResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import { useState } from "react";

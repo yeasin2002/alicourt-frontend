@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { singupSchema, type singupSchemaType } from "@/data";
-import { useRegisterMutation } from "@/store/api";
+import { useRegisterMutation } from "@/store/api/auth-api";
 import type { ApiResponse, BaseResponse } from "@/types";
 import { Loader2 } from "lucide-react";
 

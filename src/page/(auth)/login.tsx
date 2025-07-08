@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { loginSchema, type LoginSchemaType } from "@/data";
 import { useAppDispatch } from "@/hooks/use-redux";
-import { useLoginMutation } from "@/store/api";
+import { useLoginMutation } from "@/store/api/auth-api";
 import type { ApiResponse, LoginResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";

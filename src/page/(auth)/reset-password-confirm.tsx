@@ -9,7 +9,7 @@ import {
   ConfirmforgotPasswordSchema,
   type ConfirmforgotPasswordSchemaType,
 } from "@/data";
-import { useConfirmResetPasswordMutation } from "@/store/api";
+import { useConfirmResetPasswordMutation } from "@/store/api/auth-api";
 import type { ApiResponse, BaseResponse } from "@/types";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
