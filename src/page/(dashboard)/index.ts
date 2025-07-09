@@ -1,6 +1,6 @@
 export * from "./calendar";
 export * from "./chat";
-export * from "./create-class";
+export * from "./classes";
 export * from "./dashboard";
 export * from "./profile";
 

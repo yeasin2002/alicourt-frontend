@@ -12,7 +12,7 @@ import {
 
 import {
   CalendarPage,
-  CreateClassPage,
+  ClassesPage,
   DashboardPage,
   ProfilePage,
   SingleChatPage,
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
       { path: "/", Component: DashboardPage },
       { path: "/chat/:id", Component: SingleChatPage },
       { path: "/calendar", Component: CalendarPage },
-      { path: "/create-class", Component: CreateClassPage },
+      { path: "/create-class", Component: ClassesPage },
       { path: "/profile", Component: ProfilePage },
     ],
   },

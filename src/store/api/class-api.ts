@@ -1,5 +1,5 @@
 import { baseQuery } from "@/lib/rtk-base-query";
-import type { BaseResponse } from "@/types";
+import type { BaseResponse, SingleClass } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 type CreateClassBody = {
@@ -15,7 +15,7 @@ export const classApi = createApi({
     getClasses: builder.query<BaseResponse, void>({
       query: () => "/class/",
     }),
-    createClasses: builder.mutation<void, CreateClassBody>({
+    createClasses: builder.mutation<SingleClass, CreateClassBody>({
       query: (body) => ({ url: "/class/", method: "POST", body }),
     }),
   }),

@@ -4,8 +4,8 @@ export const baseQuery = fetchBaseQuery({
   baseUrl: "https://49ae-115-127-156-9.ngrok-free.app/api",
 
   prepareHeaders: (headers, { getState }) => {
-    const state = getState() as { auth?: { accessToken?: string } };
-    const token = state.auth?.accessToken || null;
+    const state = getState() as { auth?: { access?: string } };
+    const token = state.auth?.access || null;
 
     if (token) {
       headers.set("authorization", `Bearer ${token}`);

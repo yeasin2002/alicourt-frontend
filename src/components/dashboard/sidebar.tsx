@@ -1,6 +1,6 @@
 import logo from "@/assets/logo.svg";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -102,16 +102,21 @@ export function Sidebar({ className }: SidebarProps) {
 
         {/* Main Actions */}
         <div className={cn("p-4 space-y-3", isCollapsed && "px-2")}>
-          <Button
-            className={cn(
-              "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full h-10",
-              isCollapsed ? "w-10 px-0" : "w-full"
-            )}
+          <Link
+            to={"/"}
+            className={buttonVariants({
+              className: {
+                "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white !rounded-full h-10 ":
+                  true,
+                "w-10 px-0": isCollapsed,
+                "w-full": !isCollapsed,
+              },
+            })}
             title={isCollapsed ? "New Plans" : undefined}
           >
             <Plus className="h-4 w-4" />
             {!isCollapsed && <span className="ml-2">New Plans</span>}
-          </Button>
+          </Link>
 
           <Link to="/calendar">
             <Button

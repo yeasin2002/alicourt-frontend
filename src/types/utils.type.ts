@@ -18,3 +18,11 @@ export type AuthState = {
   refresh: string | null;
   isAuthenticated: boolean;
 };
+
+export type SingleClass = {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  user: number;
+};
