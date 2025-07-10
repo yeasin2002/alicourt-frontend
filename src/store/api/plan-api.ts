@@ -2,10 +2,10 @@ import { baseQuery } from "@/lib/rtk-base-query";
 import type { BaseResponse } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-type CreatePlanBody = {
+export type CreatePlanBody = {
   title: string;
-  date: string;
-  description: string;
+  duration: number;
+  goals: string;
 };
 
 export const planApi = createApi({

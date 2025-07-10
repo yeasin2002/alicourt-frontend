@@ -1,4 +1,6 @@
+import { dateToTimeNormalize } from "@/lib/date-time-normalize";
 import { ExternalLink } from "lucide-react";
+import { CreatePlanEvent } from "./create-plan-event";
 
 interface CalendarEvent {
   id: string;
@@ -8,17 +10,12 @@ interface CalendarEvent {
   type: "chat" | "text" | "meeting";
 }
 
-interface CalendarEventsProps {
-  selectedDate?: Date;
-  events?: CalendarEvent[];
+interface Props extends React.ComponentProps<"div"> {
+  selectedDate: Date;
 }
 
-export function CalendarEvents({
-  selectedDate,
-  events = [],
-}: CalendarEventsProps) {
-  // Default events if none provided
-  const defaultEvents: CalendarEvent[] = [
+export function CalendarEvents({ selectedDate }: Props) {
+  const event: CalendarEvent[] = [
     {
       id: "1",
       date: new Date(2024, 2, 15),
@@ -35,30 +32,21 @@ export function CalendarEvents({
     },
   ];
 
-  const allEvents = events.length > 0 ? events : defaultEvents;
-
-  // Filter events for selected date or show all if no date selected
-  const filteredEvents = selectedDate
-    ? allEvents.filter(
-        (event) => event.date.toDateString() === selectedDate.toDateString()
-      )
-    : allEvents;
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-    });
-  };
+  const filteredEvents = event;
+  // const filteredEvents = selectedDate
+  //   ? event.filter(
+  //       (event) => event.date.toDateString() === selectedDate.toDateString()
+  //     )
+  //   : event;
 
   return (
     <div className="p-6 space-y-4">
       {selectedDate && (
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-gray-800">
-            Events for {formatDate(selectedDate)}
+            Events for {dateToTimeNormalize(selectedDate)}
           </h3>
+          <CreatePlanEvent />
         </div>
       )}
 
