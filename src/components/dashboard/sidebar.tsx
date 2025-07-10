@@ -134,7 +134,7 @@ export function Sidebar({ className }: SidebarProps) {
             </Button>
           </Link>
 
-          <Link to="/create-class">
+          <Link to="/class">
             <Button
               variant="ghost"
               className={cn(

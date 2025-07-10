@@ -16,6 +16,7 @@ import {
   DashboardPage,
   ProfilePage,
   SingleChatPage,
+  SingleClassPage,
 } from "./page/(dashboard)";
 
 export const router = createBrowserRouter([
@@ -25,7 +26,8 @@ export const router = createBrowserRouter([
       { path: "/", Component: DashboardPage },
       { path: "/chat/:id", Component: SingleChatPage },
       { path: "/calendar", Component: CalendarPage },
-      { path: "/create-class", Component: ClassesPage },
+      { path: "/class", Component: ClassesPage },
+      { path: "/class/:id", Component: SingleClassPage },
       { path: "/profile", Component: ProfilePage },
     ],
   },

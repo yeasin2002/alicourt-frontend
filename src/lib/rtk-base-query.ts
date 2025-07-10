@@ -6,7 +6,6 @@ export const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as { auth?: { access?: string } };
     const token = state.auth?.access || null;
-    console.log("token: ", token);
 
     if (token) {
       headers.set("authorization", `Bearer ${token}`);

@@ -1,22 +1,28 @@
 import { baseQuery } from "@/lib/rtk-base-query";
-import type { BaseResponse, SingleClass } from "@/types";
+import type { SingleClass } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-type CreateClassBody = {
+type ClassItems = {
+  id: string;
   title: string;
-  date: string;
   description: string;
 };
 
 export const classApi = createApi({
   reducerPath: "classApi",
   baseQuery: baseQuery,
+  tagTypes: ["class"],
   endpoints: (builder) => ({
-    getClasses: builder.query<BaseResponse, void>({
-      query: () => "/class/",
+    getClasses: builder.query<ClassItems[], void>({
+      query: () => ({
+        url: "/class/",
+        headers: { "ngrok-skip-browser-warning": "true" },
+      }),
+      providesTags: ["class"],
     }),
-    createClasses: builder.mutation<SingleClass, CreateClassBody>({
+    createClasses: builder.mutation<SingleClass, ClassItems>({
       query: (body) => ({ url: "/class/", method: "POST", body }),
+      invalidatesTags: [{ type: "class" }],
     }),
   }),
 });
