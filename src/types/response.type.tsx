@@ -7,6 +7,7 @@ export type errorResponse = {
 
 export type LoginResponse = {
   token: Token;
+  user_id: number;
   message: string;
 };
 

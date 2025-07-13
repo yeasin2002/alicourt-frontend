@@ -26,3 +26,14 @@ export type SingleClass = {
   description: string;
   user: number;
 };
+
+export type SingleChat = {
+  id: number;
+  chat_id: string;
+  user: number;
+  question: string;
+  answer: string | null;
+  topic: string;
+  timestamp: string;
+};
+

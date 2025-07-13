@@ -1,11 +1,12 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: "https://49ae-115-127-156-9.ngrok-free.app/api",
+  baseUrl: "https://6dbc1e7b4e90.ngrok-free.app/api",
 
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as { auth?: { access?: string } };
     const token = state.auth?.access || null;
+    headers.set("ngrok-skip-browser-warning", "true");
 
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
