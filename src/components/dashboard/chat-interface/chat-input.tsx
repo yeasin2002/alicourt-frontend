@@ -1,25 +1,21 @@
 import { Button, Input } from "@/components/ui";
-import { Send } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Loader2, Send } from "lucide-react";
 
 interface Props extends React.ComponentProps<"input"> {
   disabledButton?: boolean;
-  onSend?: () => void;
+  wrapperClassName?: string;
 }
 
 export const ChatInput = ({
   disabledButton,
-  onSend = () => {},
+
+  wrapperClassName,
   ...props
 }: Props) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSend?.();
-  };
-
   return (
-    <form
-      className="p-6 bg-white border-t border-gray-200"
-      onSubmit={handleSubmit}
+    <div
+      className={cn("p-6 bg-white border-t border-gray-200", wrapperClassName)}
     >
       <div className="relative">
         <Input
@@ -31,13 +27,17 @@ export const ChatInput = ({
         <Button
           disabled={disabledButton}
           size="sm"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2  rounded-full h-10 w-10 p-0 disabled:opacity-50"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2  rounded-full h-10 w-10 p-0 disabled:opacity-80"
           variant={"purple-blue"}
           type="submit"
         >
-          <Send className="h-4 w-4 text-white" />
+          {disabledButton ? (
+            <Loader2 className="animate-spin text-white size-4" />
+          ) : (
+            <Send className="h-4 w-4 text-white" />
+          )}
         </Button>
       </div>
-    </form>
+    </div>
   );
 };

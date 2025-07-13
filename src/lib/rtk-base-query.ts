@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: "https://6dbc1e7b4e90.ngrok-free.app/api",
+  baseUrl: "https://199f2734bb56.ngrok-free.app/api",
 
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as { auth?: { access?: string } };

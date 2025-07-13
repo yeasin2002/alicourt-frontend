@@ -8,16 +8,20 @@ export type ChatWithAiBody = { question: string; topic: string };
 export const chatApi = createApi({
   reducerPath: "chatApi",
   baseQuery: baseQuery,
+  tagTypes: ["chat"],
   endpoints: (builder) => ({
     getAllChatList: builder.query<SingleChat[], number>({
       query: (id) => `chats/?user_id=${id}`,
+      providesTags: ["chat"],
     }),
     getChatListByChatId: builder.query<SingleChat[], number>({
       query: (chatId) => `chat/history/?chat_id=${chatId}`,
+      providesTags: ["chat"],
     }),
 
     createAiChat: builder.mutation<BaseResponse, ChatWithAiBody>({
       query: (body) => ({ url: "/ai-chat/", method: "POST", body }),
+      invalidatesTags: ["chat"],
     }),
   }),
 });
