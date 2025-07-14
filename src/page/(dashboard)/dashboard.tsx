@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { dateToTimeNormalize } from "@/lib/date-time-normalize";
+import { useNavigate } from "react-router";
 
 const userAvatar =
   "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -26,8 +26,8 @@ export const DashboardPage = ({ ...props }: Props) => {
   const [inputValue, setInputValue] = useState("");
   const [topic, setTopic] = useState<null | string>();
 
+  const navigation = useNavigate();
   const [createAiChat, { isLoading }] = useCreateAiChatMutation();
-  
 
   const handleMessageSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +37,13 @@ export const DashboardPage = ({ ...props }: Props) => {
         question: inputValue,
         topic: topic || "normal",
       });
+
+      if (!res.data?.answer && res.error) new Error("something went wrong");
+
+      setInputValue("");
+      setTopic(null);
+      navigation(`/chat/${res.data?.chat_id}`, { replace: true });
+
       console.log(res);
     } catch (error) {
       toast.error((error as Error).message || "something went wrong");
@@ -54,10 +61,9 @@ export const DashboardPage = ({ ...props }: Props) => {
                   id: "1",
                   type: "user",
                   message: inputValue,
-                  timestamp: new Date(),
+                  timestamp: new Date().toISOString(),
                   avatar: userAvatar,
                 }}
-                formatTime={dateToTimeNormalize}
               />
 
               <ChatMessageBubble
@@ -65,9 +71,8 @@ export const DashboardPage = ({ ...props }: Props) => {
                   id: "1",
                   type: "bot",
                   message: "generating response...",
-                  timestamp: new Date(),
+                  timestamp: "just now",
                 }}
-                formatTime={dateToTimeNormalize}
               />
             </div>
           )}

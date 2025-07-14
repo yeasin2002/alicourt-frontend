@@ -1,5 +1,5 @@
 import { baseQuery } from "@/lib/rtk-base-query";
-import type { BaseResponse, SingleChat } from "@/types";
+import type { SingleChat } from "@/types";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 export type CreateChatBody = { question: string; sender: "user" | "bot" };
@@ -14,12 +14,12 @@ export const chatApi = createApi({
       query: (id) => `chats/?user_id=${id}`,
       providesTags: ["chat"],
     }),
-    getChatListByChatId: builder.query<SingleChat[], number>({
+    getChatListByChatId: builder.query<SingleChat[], string>({
       query: (chatId) => `chat/history/?chat_id=${chatId}`,
       providesTags: ["chat"],
     }),
 
-    createAiChat: builder.mutation<BaseResponse, ChatWithAiBody>({
+    createAiChat: builder.mutation<SingleChat, ChatWithAiBody>({
       query: (body) => ({ url: "/ai-chat/", method: "POST", body }),
       invalidatesTags: ["chat"],
     }),
